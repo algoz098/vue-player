@@ -5,9 +5,11 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+	"lint": "vue-cli-service lint",
+	"docs:generate": "vuedoc.md.cmd ./src/components/player.vue --output README.md"
   },
   "dependencies": {
+    "@vuedoc/md": "^1.6.0",
     "core-js": "^2.6.5",
     "vue": "^2.6.10"
   },
@@ -18,6 +20,8 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "jsdoc-vue-component": "^2.2.4",
+    "jsdoc-vuedoc": "^1.2.1",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
