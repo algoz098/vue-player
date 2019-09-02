@@ -1,12 +1,13 @@
 {
-  "name": "vue-player",
+  "name": "@algoz098/vue-player",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-	"lint": "vue-cli-service lint",
-	"docs:generate": "vuedoc.md.cmd ./src/components/player.vue --output README.md"
+    "lint": "vue-cli-service lint",
+    "docs:generate": "vuedoc.md.cmd ./src/components/player.vue --output README.md",
+    "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
     "@vuedoc/md": "^1.6.0",
@@ -16,8 +17,12 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.11.0",
     "@vue/cli-plugin-eslint": "^3.11.0",
+    "@vue/cli-plugin-unit-jest": "^3.11.0",
     "@vue/cli-service": "^3.11.0",
+    "@vue/test-utils": "^1.0.0-beta.29",
+    "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "jsdoc-vue-component": "^2.2.4",
@@ -36,7 +41,17 @@
     "rules": {},
     "parserOptions": {
       "parser": "babel-eslint"
-    }
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/__tests__/*.{j,t}s?(x)"
+        ],
+        "env": {
+          "jest": true
+        }
+      }
+    ]
   },
   "postcss": {
     "plugins": {

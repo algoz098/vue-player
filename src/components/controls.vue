@@ -21,7 +21,7 @@ export default {
 
 	computed: {
 		theClass() {
-			if (!!this.$attrs.class) return this.$attrs.class
+			if (this.$attrs.class) return this.$attrs.class
 
 			return '.vue-video-player-controls'
 		}

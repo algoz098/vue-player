@@ -152,7 +152,7 @@
 				@click="atFullscreen"
 			>
 				<!-- Use this slot to replace the label of fullscreen button  -->
-				<slot name="fullsreen-label">
+				<slot name="fullscreen-label">
 					F
 				</slot>
 			</p-button>
