@@ -27,8 +27,7 @@ export default {
 
 <style scoped>
  .button {
-	width: 25px;
-	height: 100%;
+	width: 35px;
 	border: 0px solid white;
 	color: white;
 	background-color: transparent;

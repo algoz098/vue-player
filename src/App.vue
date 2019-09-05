@@ -1,16 +1,11 @@
 <template>
   <div id="app">
     <vue-player 
-		:src="[
-			'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-			'http://techslides.com/demos/sample-videos/small.mp4'
-		]"
+		src="http://techslides.com/demos/sample-videos/small.mp4"
 		poster="https://via.placeholder.com/150"
-		:src-index.sync="srcIndex"
-		:controls.sync="controls"
-		@fullscreen="fullscreen = $event"
-		:volume.sync="volume"
+		title="this is a title"
 		v-model="playing"
+		autoplay
 	>
     </vue-player>
 
@@ -45,7 +40,7 @@ export default {
   name: 'app',
 
   components: {
-    vuePlayer
+	vuePlayer
   },
 
   data () {
@@ -68,8 +63,9 @@ export default {
 
 <style>
 body {
-	margin: 10px
-};
+	margin: 10px;
+  	max-width: 50vw;
+}
 
 #app {
   margin: 0;

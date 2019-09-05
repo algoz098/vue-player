@@ -1,17 +1,18 @@
 {
   "name": "@algoz098/vue-player",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "docs:generate": "vuedoc.md.cmd ./src/components/player.vue --output README.md",
+    "docs:generate": "vuedoc.md.cmd ./src/components/player.vue --output PLAYER.md",
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
     "@vuedoc/md": "^1.6.0",
     "core-js": "^2.6.5",
+    "material-design-icons": "^3.0.1",
     "vue": "^2.6.10"
   },
   "devDependencies": {

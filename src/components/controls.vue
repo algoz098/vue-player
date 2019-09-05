@@ -39,7 +39,8 @@ export default {
 }
 
 .vue-video-player-controls {
-  max-height: 20px;
+  	max-height: 30px;
+    display: flex;
 	bottom:0;
 	left:0;
 	right:0;

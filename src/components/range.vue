@@ -51,6 +51,7 @@ export default {
 <style scoped>
 
 input[type=range].vue-player-range {
+    padding-top: 7px;
 	vertical-align: bottom;
   -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
   width: 100%; /* Specific width is required for Firefox. */

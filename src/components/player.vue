@@ -24,14 +24,11 @@
 		@ended="atEnded"
 	/>
 
-	<!-- Use this slot replace the poster image tag -->
-	<slot name="poster">
-		<img
-			:src="poster"
-			class="placeholder"
-			v-if="!started && poster"
-		/>
-	</slot>
+	<img
+		:src="poster"
+		class="placeholder"
+		v-if="!started && poster"
+	/>
 
 	<video 
 		:src="videoPlaceholderSrc"
@@ -46,15 +43,18 @@
 		:class="overlayClass"
 		v-if="!started"
 	>
-		<!-- Use this slot to replace the overlay content -->
-		<slot name="overlay">
-			<p-button
-				@click="atPlayPause"
-				:style="{fontSize: '29vw', width: '100%'}"
-			>
-				&#9658
-			</p-button>
-		</slot>
+		<div
+			class="title"
+		>
+			{{title}}
+		</div>
+
+		<p-button
+			class="start-button"
+			@click="atPlayPause"
+		>
+			<i class="material-icons size-124">play_arrow</i>
+		</p-button>
 	</div>
 	
 	<!-- Use this slot to replace the controls  -->
@@ -64,98 +64,67 @@
 			:show="showControlsIf"
 			:style="controlsStyleComputed"
 		>
-			<!-- Use this slot to replace the play button  -->
-			<slot name="play">
-				<p-button
-					:class="playButtonClass"
-					:style="playButtonStyle"
-					@click="atPlayPause"
+			<p-button
+				:class="playButtonClass"
+				:style="playButtonStyle"
+				@click="atPlayPause"
+			>
+				<i 
+					v-if="!playingComputed"
+					class="material-icons"
 				>
-				<!-- Use this slot to replace the label of play button  -->
-					<slot name="play-label">
-						<span
-							v-if="!playingComputed"
-						>
-							&#9658
-						</span>
+					play_arrow
+				</i>
 
-						<span
-							v-else
-						>
-							||
-						</span>
-					</slot>
-				</p-button>
-			</slot>
+				<i 
+					v-else
+					class="material-icons"
+				>
+					pause
+				</i>
+			</p-button>
 			
-			<!-- Use this slot to replace the entire volume button and control of the volume  -->
-			<slot name="volume">
-				<p-button
-					@click="atVolume"
-					:class="volumeButtonClass"
-					:style="volumeButtonStyle"
+			<p-button
+				@click="atVolume"
+				:class="volumeButtonClass"
+				:style="volumeButtonStyle"
+			>
+				<i 
+					class="material-icons"
 				>
-					<!-- Use this slot to replace the label of volume button  -->
-					<slot name="volume-label">
-						<span
-							v-if="showSound"
-						>
-							S
-						</span>
+					volume_up
+				</i>
+			</p-button>
 
-						<span
-							v-else
-						>
-							s
-						</span>
-					</slot>
-				</p-button>
+			<range
+				v-model="volumeComputed"
+				:max="1"
+				width="60px"
+				:show="showSound"
+			/>
 
-				<!-- Use this slot to replace the control of the volume  -->
-				<slot name="volume-control-input">
-					<range
-						v-model="volumeComputed"
-						:max="1"
-						width="60px"
-						:show="showSound"
-					/>
-				</slot>
-			</slot>
+			<p-button
+				@click="atVolume"
+				:class="timerClass"
+				:style="timerStyle"
+			>
+				{{minutesTime}} / {{minutesDuration}}
+			</p-button>
 
-			<!-- Use this slot to replace the timer layout  -->
-			<slot name="timer">
-				<p-button
-					@click="atVolume"
-					:class="timerClass"
-					:style="timerStyle"
-				>
-					<!-- Use this slot to replace the label timer layout  -->
-					<slot name="timer-label">
-						{{minutesTime}} / {{minutesDuration}}
-					</slot>
-				</p-button>
-			</slot>
-
-			<!-- Use this slot to replace the timer control  -->
-			<slot name="timer-control">
-				<range
-					v-model="timeComputed"
-					:max="duration"
-					:width="timerControlWidth"
-					show
-				/>
-			</slot>
-			
 			<p-button
 				:class="fullscreenButtonClass"
 				:style="fullscreenButtonStyle"
 				@click="atFullscreen"
 			>
-				<!-- Use this slot to replace the label of fullscreen button  -->
-				<slot name="fullscreen-label">
-					F
-				</slot>
+				<i class="material-icons">fullscreen</i>
 			</p-button>
+
+			<range
+				v-model="timeComputed"
+				class="vue-player-time-control"
+				:max="duration"
+				show
+			/>
 		</controls>
 	</slot>
 </div>
@@ -167,10 +136,9 @@ import pButton from './button'
 import range from './range'
 
   /**
-   * The custom vue html5 video player
+   * A must have html5 video player made in VueJS
    * 
    * @author Artur  Sena
-   * @license MIT
    */
 export default {
 	name: 'vue-player',
@@ -182,6 +150,16 @@ export default {
 	},
 
 	props: {
+		/**
+       * Set title.
+       * It appears on the overlay
+       * @model
+       */
+		title: {
+			type: String,
+			default: null
+		},
+
 		/**
        * Set play/pause.
        * It automatically set the video the right state
@@ -302,7 +280,7 @@ export default {
        * class for the fullscreen button
        */
 		fullscreenButtonClass:{
-			default: null
+			default: 'fullscreen-button-class'
 		},
 
 		/**
@@ -486,15 +464,6 @@ export default {
 		/**
        * @private
        */
-	  	timerControlWidth () {
-			if (!this.showSound) return 'calc(100% - 156px)'
-
-			return 'calc(100% - 154px - 60px)'
-		},
-
-		/**
-       * @private
-       */
 		controlsStyleComputed() {
 			if (this.controlsStyle != undefined) return this.controlsStyle
 			
@@ -639,6 +608,43 @@ export default {
 </script>
 
 <style scoped>
+@import '~material-design-icons/iconfont/material-icons.css';
+
+.title {
+	padding-top: 3px;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 20px;
+    width: calc(100% - 6px);
+	align-self: start;
+	font-size: 18px;
+	letter-spacing: 1px;
+	position: absolute;
+	top: 0;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.300), rgba(0, 0, 0, 0));
+}
+
+.start-button {
+	width: auto;
+	height: auto;
+	border: 8px solid white;
+	border-radius: 1rem;
+	background-color: rgba(0, 0, 0, 0.3);
+	cursor: pointer;
+}
+
+.start-button:hover {
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.size-124 {
+	font-size: 124px;
+}
+
+.material-icons {
+	vertical-align: bottom;
+}
+
 .transparent {
 	opacity: 0
 }
@@ -680,4 +686,38 @@ export default {
 	position: absolute;
 }
 
+.fullscreen-button-class{
+	margin-left: auto
+}
+
+input[type=range].vue-player-time-control {
+	position: absolute;	
+	top: -5px;
+	left: 0;
+	padding-top: 0;
+}
+
+/* Special styling for WebKit/Blink */
+input[type=range].vue-player-time-control::-webkit-slider-thumb {
+  height: 10px;
+  width: 10px;
+  margin-top: -3px;
+  border-radius: 50%;
+}
+
+/* All the same stuff for Firefox */
+input[type=range].vue-player-time-control::-moz-range-thumb {
+  height: 10px;
+  width: 10px;
+  margin-top: -3px;
+  border-radius: 50%;
+}
+
+/* All the same stuff for IE */
+input[type=range].vue-player-time-control::-ms-thumb {
+  height: 10px;
+  width: 10px;
+  margin-top: -3px;
+  border-radius: 50%;
+}
 </style>
