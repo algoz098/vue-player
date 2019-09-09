@@ -1,9 +1,8 @@
 # vue-player 
 
-The custom vue html5 video player 
+A must have html5 video player made in VueJS 
 
 - **author** - Artur  Sena 
-- **license** - MIT 
 
 ## slots 
 
@@ -34,6 +33,14 @@ The custom vue html5 video player
 - `autoplay` ***Boolean*** (*optional*) `default: false` 
 
   set the video to autoplay as it's loaded 
+
+- `preview-on-mouse` ***Boolean*** (*optional*) `default: false` 
+
+  show video preview if mouse hover 
+
+- `playsinline` ***Boolean*** (*optional*) `default: false` 
+
+  set the video to playsinline as it's loaded 
 
 - `poster` ***String*** (*optional*) 
 
@@ -99,6 +106,10 @@ The custom vue html5 video player
 ## data 
 
 - `showSound` 
+
+**initial value:** `false` 
+
+- `mouseover` 
 
 **initial value:** `false` 
 

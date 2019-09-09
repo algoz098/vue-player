@@ -12,6 +12,7 @@
 		:src="srcComputed"
 		:controls="false"
 		:autoplay="autoplay"
+		:playsinline="playsinline"
 		:class="{
 			'transparent': !started
 		}"
@@ -24,19 +25,12 @@
 		@ended="atEnded"
 	/>
 
-	<img
-		:src="poster"
-		class="placeholder"
-		v-if="!started && poster"
-	/>
-
-	<video 
+	<video-placeholder
 		:src="videoPlaceholderSrc"
-		:controls="false"
-		class="placeholder"
-		muted
-		autoplay
-		v-if="!started && videoPlaceholderSrc"
+		:poster="poster"
+		:preview-on-mouse="previewOnMouse"
+		:mouseover="mouseover"
+		v-if="!started"
 	/>
 
 	<div 
@@ -45,6 +39,7 @@
 	>
 		<div
 			class="title"
+			v-if="title"
 		>
 			{{title}}
 		</div>
@@ -134,6 +129,7 @@
 import controls from './controls'
 import pButton from './button'
 import range from './range'
+import videoPlaceholder from './videoPlaceholder'
 
   /**
    * A must have html5 video player made in VueJS
@@ -146,7 +142,8 @@ export default {
 	components: {
 		controls,
 		pButton,
-		range
+		range,
+		videoPlaceholder
 	},
 
 	props: {
@@ -189,6 +186,22 @@ export default {
        * set the video to autoplay as it's loaded
        */
 		autoplay: {
+			type: Boolean,
+			default: false
+		},
+
+		/**
+       * show video preview if mouse hover
+       */
+		previewOnMouse: {
+			type: Boolean,
+			default: false
+		},
+
+		/**
+       * set the video to playsinline as it's loaded
+       */
+		playsinline: {
 			type: Boolean,
 			default: false
 		},
@@ -301,6 +314,7 @@ export default {
 	data () {
 		return {
 			showSound: false,
+			mouseover: false,
 			playing: false,
 			showControlsInternal: false,
 			started: false,
@@ -312,7 +326,7 @@ export default {
 	},
 
 	watch: {
-		value(after, before) {
+		value (after) {
 			if (after && this.$refs.video.paused) {
 				this.$refs.video.play()
 			} else if (!after && !this.$refs.video.paused) {
@@ -320,7 +334,7 @@ export default {
 			}
 		},
 
-		volume(after, before) {
+		volume () {
 			this.$refs.video.volume = this.volumeComputed
 		},
 	},
@@ -433,6 +447,7 @@ export default {
        * @private
        */
 		atMouseenter () {
+			this.mouseover = true
 			this.showControlsComputed = true
 		},
 
@@ -440,6 +455,7 @@ export default {
        * @private
        */
 		atMouseleave () {
+			this.mouseover = false
 			this.showControlsComputed = false
 		},
 

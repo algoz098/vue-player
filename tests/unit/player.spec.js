@@ -2,6 +2,12 @@ import { shallowMount } from '@vue/test-utils'
 import Player from '@/components/Player.vue'
 import pButton from '@/components/button.vue'
 
+import enableInlineVideo from 'iphone-inline-video';
+
+jest.mock('iphone-inline-video', () => {
+  return null
+})
+
 describe('Player.vue', () => {
   it('renders props.src when passed', () => {
 	const src = 'http://clips.vorwaerts-gmbh.de/VfE_html5.mp4'
@@ -33,6 +39,26 @@ describe('Player.vue', () => {
 	})
 
     expect(wrapper.html()).toContain('autoplay')
+  })
+
+  it('renders props.playsinline when passed', () => {
+	const playsinline = true
+
+	const wrapper = shallowMount(Player, {
+      propsData: { src: '', playsinline }
+	})
+
+    expect(wrapper.html()).toContain('playsinline')
+  })
+
+  it('renders props.previewOnMouse when passed', () => {
+	const previewOnMouse = true
+
+	const wrapper = shallowMount(Player, {
+      propsData: { src: '', previewOnMouse }
+	})
+	
+    expect(wrapper.props().previewOnMouse).toBe(previewOnMouse)
   })
 
   it('renders props.poster when passed', () => {
@@ -204,4 +230,5 @@ describe('Player.vue', () => {
 	wrapper.find('video').trigger('ended')
 
 	expect(wrapper.emitted('update:srcIndex').flat()[0]).toBe(2)
-  })
+	})
+})

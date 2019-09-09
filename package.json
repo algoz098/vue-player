@@ -1,6 +1,6 @@
 {
   "name": "@algoz098/vue-player",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -26,6 +26,7 @@
     "babel-jest": "^23.6.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "iphone-inline-video": "^2.2.2",
     "jsdoc-vue-component": "^2.2.4",
     "jsdoc-vuedoc": "^1.2.1",
     "vue-template-compiler": "^2.6.10"

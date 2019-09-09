@@ -13,16 +13,14 @@
 
 This is a html5 video component made in VueJS with to quickly add videos with placeholders and intros.
 
-  
-
 ### Features
-
+- Has `poster` to show a image placeholder before video
+- Has `video-placeholder-src` to autoplay a video without sound
+- Has `preview-on-mouse` add option to alter between poster and video-preview (youtube like)
+- Events telling what's happening
 - full control of the player
-
 - 100% vue
-
 - no third parties js libs
-
   
 
 ## Usage & Guide

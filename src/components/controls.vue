@@ -39,14 +39,14 @@ export default {
 }
 
 .vue-video-player-controls {
-  	max-height: 30px;
-    display: flex;
-	bottom:0;
-	left:0;
-	right:0;
-	padding: 5px;
-	position: absolute;
-	bottom: 0;
-	background-color: rgba(0, 0, 0, 0.3);
+  max-height: 30px;
+  display: flex;
+  bottom:0;
+  left:0;
+  right:0;
+  padding: 5px;
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 </style>

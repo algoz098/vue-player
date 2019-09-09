@@ -2,10 +2,12 @@
   <div id="app">
     <vue-player 
 		src="http://techslides.com/demos/sample-videos/small.mp4"
+		videoPlaceholderSrc="http://techslides.com/demos/sample-videos/small.mp4"
 		poster="https://via.placeholder.com/150"
-		title="this is a title"
+		title="this is a title 5"
+		playsinline
+		preview-on-mouse
 		v-model="playing"
-		autoplay
 	>
     </vue-player>
 
@@ -54,17 +56,17 @@ export default {
   },
 
   methods: {
-	  setVolume (e) {
-		  this.volume = Number(e.target.value)
-	  }
+		setVolume (e) {
+			this.volume = Number(e.target.value)
+		}
   }
 }
 </script>
 
 <style>
 body {
-	margin: 10px;
-  	max-width: 50vw;
+  margin: 10px;
+  max-width: 50vw;
 }
 
 #app {
