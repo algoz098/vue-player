@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
+	"lint": "vue-cli-service lint",
+	"deploy:gh-pages": "node deployGhPages.js",
     "docs:generate": "vuedoc.md.cmd ./src/components/player.vue --output PLAYER.md",
     "test:unit": "vue-cli-service test:unit"
   },
