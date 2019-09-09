@@ -7,8 +7,6 @@ function execute (command) {
 		exec(command, 
 			function (error, stdout, stderr) { 
 				if (error) {
-					console.log("error1", error)
-					console.log("stderr", stderr)
 					reject(stderr)
 				}
 
@@ -19,9 +17,6 @@ function execute (command) {
 }
 
 async function start () {
-	// console.log('commitMessage', commitMessage)
-	// return
-
 	try {
 		console.log('Building...')
 		await execute('npm run build')

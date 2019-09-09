@@ -22,6 +22,8 @@ This is a html5 video component made in VueJS with to quickly add videos with pl
 - 100% vue
 - no third parties js libs
   
+### Examples
+https://algoz098.github.io/vue-player/
 
 ## Usage & Guide
 
