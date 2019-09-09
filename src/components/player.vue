@@ -637,6 +637,7 @@ export default {
 	letter-spacing: 1px;
 	position: absolute;
 	top: 0;
+	color: white;
 	background-image: linear-gradient(rgba(0, 0, 0, 0.300), rgba(0, 0, 0, 0));
 }
 

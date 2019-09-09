@@ -1,48 +1,53 @@
 <template>
-  <div id="app">
-    <vue-player 
-		src="http://techslides.com/demos/sample-videos/small.mp4"
-		videoPlaceholderSrc="http://techslides.com/demos/sample-videos/small.mp4"
-		poster="https://via.placeholder.com/150"
-		title="this is a title 5"
-		playsinline
-		preview-on-mouse
-		v-model="playing"
-	>
-    </vue-player>
+	<div id="app">
+		<div class="columns is-centered">
+			<div class="column is-half">
+				<intro />
+				
+				<div class="container">
+					<h2 class="title ">Instalation</h2>
 
-		<ul>
-			<li>
-				src-index: {{srcIndex}}
-			</li>
+					<p class="subtitle">
+						Click <a href="https://github.com/algoz098/vue-player#usage--guide">here</a>
+					</p>
+				</div>
 
-			<li @click="playing = !playing">
-				playing: {{playing}}
-			</li>
+				<basic-player />
 
-			<li @click="controls = !controls">
-				controls: {{controls}}
-			</li>
+				<minimum-player />
 
-			<li @click="fullscreen = !fullscreen">
-				fullscreen: {{fullscreen}}
-			</li>
+				<preview-player />
+				
+				<poster-player />
+				
+				<div class="container">
+					<h2 class="title ">More</h2>
 
-			<li>
-				volume: <input type="range" min="0" max="1" step="0.01" :value="volume" @input="setVolume" /> {{volume}}
-			</li>
-		</ul>
-  </div>
+					<p class="subtitle">
+						For more details, events, and props see <a href="https://github.com/algoz098/vue-player/blob/master/PLAYER.md">this</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script>
-import vuePlayer from './components/player.vue'
+import intro from './showcase/intro.vue'
+import basicPlayer from './showcase/basicPlayer.vue'
+import minimumPlayer from './showcase/minimumPlayer.vue'
+import previewPlayer from './showcase/previewPlayer.vue'
+import posterPlayer from './showcase/posterPlayer.vue'
 
 export default {
   name: 'app',
 
   components: {
-	vuePlayer
+	intro,
+	basicPlayer,
+	minimumPlayer,
+	previewPlayer,
+	posterPlayer
   },
 
   data () {
@@ -64,12 +69,42 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 body {
-  margin: 10px;
-  max-width: 50vw;
+	margin-top: 0;
+	margin-left: 17vw;
+	margin-right: 17vw;
+	font-family: 'Montserrat', sans-serif;
 }
 
-#app {
-  margin: 0;
+.title {
+	margin-bottom: 5px;
+	font-size: 2.5rem;
+}
+
+.subtitle {
+	margin-top: 0;
+	font-size: 1.5rem;
+	max-width: 900px;
+}
+
+.flex {
+	display: flex;
+}
+
+.flex > div:not(:last-child) {
+	padding-right: 10px;
+	padding-left: 0px;
+}
+
+.flex > div:not(:first-child) {
+	padding-right: 0px;
+	padding-left: 10px;
+}
+
+.highlight {
+	background-color: rgb(209, 209, 209);
+	padding: 5px 10px;
+	border-radius: 5px;
 }
 </style>
