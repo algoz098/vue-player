@@ -4,7 +4,7 @@
 		src="http://techslides.com/demos/sample-videos/small.mp4"
 		videoPlaceholderSrc="http://techslides.com/demos/sample-videos/small.mp4"
 		poster="https://via.placeholder.com/150"
-		title="this is a title 5"
+		title="this is a title"
 		playsinline
 		preview-on-mouse
 		v-model="playing"
