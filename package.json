@@ -1,6 +1,7 @@
 {
   "name": "@algoz098/vue-player",
-  "version": "0.3.0",
+  "version": "0.3.1",
+  "url" : "https://github.com/algoz098/vue-player",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",

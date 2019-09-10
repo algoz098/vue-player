@@ -54,7 +54,7 @@ Now, just use it:
 ```
 <vue-player src="http://techslides.com/demos/sample-videos/small.mp4" poster="https://via.placeholder.com/150" title="this is a title" v-model="playing"></vue-player>
 ```
-  You can see more information [here](PLAYER.md)
+  You can see more information [here](https://github.com/algoz098/vue-player/blob/master/PLAYER.md)
   
 
 ## Contribution
