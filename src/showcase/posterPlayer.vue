@@ -14,7 +14,7 @@
 
 				<vue-player 
 					src="http://techslides.com/demos/sample-videos/small.mp4"
-					poster="https://imgplaceholder.com/420x320?text=Im+just+a+image"
+					poster="https://dummyimage.com/600x400/000/fff&text=just+a+image"
 				>
 				</vue-player>
 			</div>
@@ -42,7 +42,7 @@ export default {
 		return {
 			html: `<vue-player 
 	src="http://techslides.com/demos/sample-videos/small.mp4"
-	poster="https://imgplaceholder.com/420x320?text=Put+the+mouse+on+me"
+	poster="https://dummyimage.com/600x400/000/fff&text=just+a+image"
 ></vue-player>`
 		}
 	}

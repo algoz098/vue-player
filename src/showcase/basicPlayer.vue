@@ -15,7 +15,7 @@
 				<vue-player 
 					src="http://techslides.com/demos/sample-videos/small.mp4"
 					video-placeholder-src="http://techslides.com/demos/sample-videos/small.mp4"
-					poster="https://imgplaceholder.com/420x320?text=put+the+mouse+on+me"
+					poster="https://dummyimage.com/600x400/000/fff&text=hover+me"
 					title="I'm a title for this video"
 					playsinline
 					preview-on-mouse
@@ -47,7 +47,7 @@ export default {
 			html: `<vue-player 
 	src="http://techslides.com/demos/sample-videos/small.mp4"
 	video-placeholder-src="http://techslides.com/demos/sample-videos/small.mp4"
-	poster="https://imgplaceholder.com/420x320?text=Put+the+mouse+on+me"
+	poster="https://dummyimage.com/600x400/000/fff&text=hover+me"
 	title="I'm a title for this video"
 	playsinline
 	preview-on-mouse
