@@ -1,4 +1,11 @@
 <template>
+<div class="container">
+	<div
+		class="loading-bar"
+		:style="{width: `${loadPercent}%`}"
+		v-if="loading"
+	/>
+
 	<video 
 		:src="src"
 		:controls="false"
@@ -7,16 +14,20 @@
 		autoplay 
 		muted 
 		playsinline
-		v-if="showVideo"
+		v-show="showVideo"
+		v-if="ifVideo"
 		ref="video"
 		@loadstart="loadVideo"
+		@progress="atProgress"
+
 	/>
 
 	<img
 		:src="poster"
 		class="placeholder"
-		v-else-if="showPoster"
+		v-show="showPoster"
 	/>
+</div>
 </template>
 
 <script>
@@ -49,14 +60,32 @@ export default {
 
 	data () {
 		return {
+			loading: false,
+			loadPercent: 0
 		}
 	},
 
-	created () {
-	},
-
 	methods:{
-		loadVideo () {
+		atProgress (e) {
+			var range = 0;
+			var bf = this.$refs.video.buffered;
+			var time = this.$refs.video.currentTime;
+
+			while(!(bf.start(range) <= time && time <= bf.end(range))) {
+				range += 1;
+			}
+
+			var loadStartPercentage = bf.start(range) / this.$refs.video.duration;
+			var loadEndPercentage = bf.end(range) / this.$refs.video.duration;
+
+			this.loadPercent = (loadEndPercentage - loadStartPercentage) * 100
+
+			if (this.loadPercent >= 100) this.loading = false
+		},
+
+		loadVideo (e) {
+			this.loading = true
+
 			enableInlineVideo(this.$refs.video, {
 				iPad: true
 			})
@@ -64,6 +93,20 @@ export default {
 	},
 
 	computed: {
+		ifVideo () {
+			let result = false
+
+			if (this.previewOnMouse) {
+				if (this.mouseover) result = true
+
+				if (this.loadPercent) result = true
+			} else {
+				result = true
+			}
+
+			return result
+		},
+
 		showVideo () {
 			let result = false 
 			
@@ -79,7 +122,7 @@ export default {
 		},
 
 		showPoster () {
-			if (this.poster) return true
+			if (this.poster && !this.showVideo) return true
 
 			return false
 		}
@@ -88,4 +131,27 @@ export default {
 </script>
 
 <style scoped>
+.loading-bar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: rgb(192, 192, 192);
+	height: 3px;
+	z-index: 10;
+}
+
+div.container {
+	width: 100%;
+	height: 100%;
+}
+
+div.container,
+img,
+video{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
 </style>
