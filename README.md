@@ -34,7 +34,7 @@ npm i --save @algoz098/vue-player
 
 Then you import it where you need to use it.
 ```
-import vuePlayer  from  '@algz098/vue-player'
+import vuePlayer  from  '@algoz098/vue-player'
 ```
 Now, just tell vue to use it:
 ```

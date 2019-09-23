@@ -1,6 +1,6 @@
 {
   "name": "@algoz098/vue-player",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/algoz098/vue-player"
@@ -17,7 +17,8 @@
   "dependencies": {
     "@vuedoc/md": "^1.6.0",
     "core-js": "^2.6.5",
-    "material-design-icons": "^3.0.1",
+	"material-design-icons": "^3.0.1",
+    "iphone-inline-video": "^2.2.2",
     "vue": "^2.6.10"
   },
   "devDependencies": {
@@ -32,7 +33,6 @@
     "bulma": "^0.7.5",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
-    "iphone-inline-video": "^2.2.2",
     "jsdoc-vue-component": "^2.2.4",
     "jsdoc-vuedoc": "^1.2.1",
     "vue-template-compiler": "^2.6.10"

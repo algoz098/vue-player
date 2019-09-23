@@ -23,6 +23,7 @@
 		@canplay="atCanplay"
 		@volumechange="atVolumechange"
 		@ended="atEnded"
+		@stalled="test"
 	/>
 
 	<video-placeholder
@@ -50,7 +51,14 @@
 		>
 			<i class="material-icons size-124">play_arrow</i>
 		</p-button>
+
 	</div>
+
+	
+	<i 
+		class="material-icons size-124 spin"
+		v-if="started && loading"
+	>refresh</i>
 	
 	<!-- Use this slot to replace the controls  -->
 	<slot name="controls">
@@ -318,6 +326,7 @@ export default {
 			playing: false,
 			showControlsInternal: false,
 			started: false,
+			loading: false,
 			time: 0,
 			duration: 0,
 			volumeInternal: 1,
@@ -340,6 +349,12 @@ export default {
 	},
 
 	methods: {
+		/**
+       * @private
+       */
+	   test (e) {
+		   console.log("test", e)
+	   },
 		
 		/**
        * @private
@@ -705,6 +720,22 @@ export default {
 
 .fullscreen-button-class{
 	margin-left: auto
+}
+
+.spin {
+	position:absolute;
+    top: calc(50% - 62px);
+    left: calc(50% - 62px);
+	-webkit-animation: rotation 2s infinite linear;
+}
+
+@-webkit-keyframes rotation {
+	from {
+			-webkit-transform: rotate(0deg);
+	}
+	to {
+			-webkit-transform: rotate(359deg);
+	}
 }
 
 input[type=range].vue-player-time-control {
