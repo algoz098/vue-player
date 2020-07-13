@@ -31,5 +31,6 @@ export default {
 	border: 0px solid white;
 	color: white;
 	background-color: transparent;
+	outline: 0px;
 }
 </style>
