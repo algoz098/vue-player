@@ -1,6 +1,6 @@
 <template>
 	<section class="section">
-		<div class="container">
+		<div class="vue-video-player-container">
 			<h2 class="title ">Poster video setup</h2>
 
 			<p class="subtitle">
