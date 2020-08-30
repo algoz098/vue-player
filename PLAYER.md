@@ -178,12 +178,6 @@ A must have html5 video player made in VueJS
     </vue-player>
 
     <script>
-      import vuePlayer from "@cubanmercury/vue-player";
-
-      export default {
-        components: {
-          vuePlayer
-        },
         methods: {
           videoPlayed(playingState, element) {
             console.log("video played: ", playingState, element);

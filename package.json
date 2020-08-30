@@ -1,10 +1,9 @@
 {
-  "name": "@cubanmercury/vue-player",
-  "description": "An HTML video player module for Vue.js projects",
+  "name": "@algoz098/vue-player",
   "version": "0.4.3",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cubanmercury/vue-player"
+    "url": "git+https://github.com/algoz098/vue-player"
   },
   "private": false,
   "scripts": {
