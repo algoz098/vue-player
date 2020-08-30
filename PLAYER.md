@@ -151,3 +151,42 @@ A must have html5 video player made in VueJS
 
   emited when players go fullscreen 
 
+- `update:played`
+  emitted when video is played.  Returns video play state & video element
+  ``` typescript
+    (
+      playingState: True || Boolean
+      element: Object
+    )
+  ```
+
+- `update:paused`
+  emitted when a video is paused.  Returns video play state & video element
+  ``` typescript
+    (
+      playingState: False || Boolean
+      element: Object
+    )
+  ```
+
+- Use in templates:
+  ``` html
+    <vue-player
+      @update:played="videoPlayed"
+      @update:paused="videoPaused"
+    >
+    </vue-player>
+
+    <script>
+        methods: {
+          videoPlayed(playingState, element) {
+            console.log("video played: ", playingState, element);
+          },
+          videoPaused(playingState, element) {
+            console.log("video paused: ", playingState, element);
+          }
+        }
+      }
+
+    </script>
+  ```
