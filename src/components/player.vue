@@ -480,6 +480,7 @@ export default {
 		play () {
 			this.playingComputed = true
 			this.started = true
+			this.$emit('update:play', this.playingComputed);
 		},
 
 		/**
@@ -488,6 +489,8 @@ export default {
 		pause () {
 			if (this.time == 0) return
 			this.playingComputed = false
+			this.$emit('update:play', this.playingComputed);
+
 		}
 	},
 

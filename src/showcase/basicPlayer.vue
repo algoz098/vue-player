@@ -13,9 +13,9 @@
 				<h3 class="subtitle">Example</h3>
 
 				<vue-player 
-					src="http://techslides.com/demos/sample-videos/small.mp4"
-					video-placeholder-src="http://techslides.com/demos/sample-videos/small.mp4"
-					poster="https://dummyimage.com/600x400/000/fff&text=hover+me"
+					src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+					video-placeholder-src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg"
+					poster="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg"
 					title="I'm a title for this video"
 					playsinline
 					preview-on-mouse
@@ -45,9 +45,9 @@ export default {
 	data () {
 		return {
 			html: `<vue-player 
-	src="http://techslides.com/demos/sample-videos/small.mp4"
-	video-placeholder-src="http://techslides.com/demos/sample-videos/small.mp4"
-	poster="https://dummyimage.com/600x400/000/fff&text=hover+me"
+	src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+	video-placeholder-src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+	poster="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg"
 	title="I'm a title for this video"
 	playsinline
 	preview-on-mouse
