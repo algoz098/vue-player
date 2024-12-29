@@ -67,6 +67,9 @@ export default {
 
 	methods:{
 		atProgress (e) {
+			if (typeof (this.$refs.video.buffered) === 'undefined' || this.$refs.video.buffered.length <= 0) {
+				return // we are not yet ready as data is not yet available
+			}
 			var range = 0;
 			var bf = this.$refs.video.buffered;
 			var time = this.$refs.video.currentTime;
