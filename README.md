@@ -65,5 +65,10 @@ Now, just use it:
 You can see more information [here](https://github.com/algoz098/vue-player/blob/master/PLAYER.md)
 
 ## Contribution
+All contributions are welcome, and every pull request will be seen. Thank you for your time!
 
-All contribution are wellcome, and every pull request will be seen. Thank you for your time!
+### Developer scripts
+
+* `npm run-script build` To build the vue application.
+* `npm run-script test:unit` To run the jest tests.
+* `npm run-script serve` To run the standalone demo page.
