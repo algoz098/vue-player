@@ -4,7 +4,7 @@
 			<div class="column is-half">
 				<intro />
 				
-				<div class="container">
+				<div class="vue-video-player-container">
 					<h2 class="title ">Instalation</h2>
 
 					<p class="subtitle">
@@ -20,7 +20,7 @@
 				
 				<poster-player />
 				
-				<div class="container">
+				<div class="vue-video-player-container">
 					<h2 class="title ">More</h2>
 
 					<p class="subtitle">

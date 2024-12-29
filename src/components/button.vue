@@ -19,17 +19,18 @@ export default {
 		theClass() {
 			if (this.$attrs.class) return this.$attrs.class
 			
-			return 'button'
+			return 'vue-player-button'
 		}
 	}
 }
 </script>
 
 <style scoped>
- .button {
+ .vue-player-button {
 	width: 35px;
 	border: 0px solid white;
 	color: white;
 	background-color: transparent;
+	outline: 0px;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-<div class="container">
+<div class="vue-video-player-container">
 	<div
 		class="loading-bar"
 		:style="{width: `${loadPercent}%`}"
@@ -140,12 +140,12 @@ export default {
 	z-index: 10;
 }
 
-div.container {
+div.vue-video-player-container {
 	width: 100%;
 	height: 100%;
 }
 
-div.container,
+div.vue-video-player-container,
 img,
 video{
 	position: absolute;

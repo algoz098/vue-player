@@ -1,6 +1,6 @@
 <template>
 	<section class="section">
-		<div class="container">
+		<div class="vue-video-player-container">
 			<h2 class="title ">Minimum setup</h2>
 
 			<p class="subtitle">
@@ -13,7 +13,7 @@
 				<h3 class="subtitle">Example</h3>
 
 				<vue-player 
-					src="http://techslides.com/demos/sample-videos/small.mp4"
+					src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
 				>
 				</vue-player>
 			</div>
@@ -40,7 +40,7 @@ export default {
 	data () {
 		return {
 			html: `<vue-player 
-	src="http://techslides.com/demos/sample-videos/small.mp4"
+	src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
 ></vue-player>`
 		}
 	}
