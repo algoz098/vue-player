@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import Player from '@/components/Player.vue'
+import Player from '@/components/player.vue'
 import pButton from '@/components/button.vue'
 
 import enableInlineVideo from 'iphone-inline-video';
