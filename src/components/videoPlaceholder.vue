@@ -7,7 +7,7 @@
 	/>
 
 	<video 
-		:src="src"
+		:src="computedSrc"
 		:controls="false"
 		class="placeholder"
 		:loop="true"
@@ -19,8 +19,9 @@
 		ref="video"
 		@loadstart="loadVideo"
 		@progress="atProgress"
-
-	/>
+	>
+		<slot name="video-placeholder-sources"></slot>
+	</video>
 
 	<img
 		:src="poster"
@@ -91,8 +92,26 @@ export default {
 			})
 		},
 	},
-
+  watch: {
+		ifVideo: {
+			immediate: true,
+			async handler(newValue) {
+				if (newValue) {
+					// Wait until the DOM is updated
+					await this.$nextTick();
+					if (this.$refs.video && this.$slots["video-placeholder-sources"]) {
+						this.$refs.video.removeAttribute("src")
+					}
+				}
+			},
+		},
+	},
 	computed: {
+		computedSrc() {
+			if (this.$slots["video-placeholder-sources"])
+				return false
+			return this.src
+		},
 		ifVideo () {
 			let result = false
 
@@ -111,11 +130,11 @@ export default {
 			let result = false 
 			
 			if (this.previewOnMouse) {
-				if (this.src && this.mouseover) result = true
+				if ((this.src || this.$slots["video-placeholder-sources"]) && this.mouseover) result = true
 			} 
 
 			if (!this.previewOnMouse) {
-				if (this.src) result = true
+				if (this.src || this.$slots["video-placeholder-sources"]) result = true
 			}
 
 			return result

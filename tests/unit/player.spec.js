@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils'
+import { shallowMount, mount } from '@vue/test-utils'
 import Player from '@/components/player.vue'
 import pButton from '@/components/button.vue'
 
@@ -19,6 +19,22 @@ describe('Player.vue', () => {
     expect(wrapper.html()).toContain(src)
     expect(wrapper.props().src).toMatch(src)
   })
+
+  it("renders sources slot even when props.src is passed", () => {
+	const src = "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4";
+	const sources_el = '<source src="foo.webm" type="video/webm">'
+	const wrapper = shallowMount(Player, {
+		propsData: { src },
+		slots: {
+			sources: sources_el,
+		},
+	});
+
+	// Check the slot content is correctly rendered
+	expect(wrapper.html()).toContain(sources_el);
+	expect(wrapper.html()).not.toContain(src); // Ensure src prop content is not rendered
+	expect(wrapper.props().src).toMatch(src);
+	});
 
   it('renders props.src when passed', () => {
 	const src = [ '0', '1']
@@ -80,6 +96,20 @@ describe('Player.vue', () => {
 
     expect(wrapper.html()).toContain(videoPlaceholderSrc)
   })
+
+	it('renders slot:video-placeholder-sources even when when videoPlaceholder passed', () => {
+		const videoPlaceholderSrc = 'http://www.test.com'
+		const sources_el = '<source src="foo.webm" type="video/webm">'
+		const wrapper = mount(Player, {
+			propsData: { src: '', videoPlaceholderSrc },
+			slots: {
+				"video-placeholder-sources": sources_el,
+			},
+		})
+
+		expect(wrapper.html()).not.toContain(videoPlaceholderSrc)
+		expect(wrapper.html()).toContain(sources_el);
+	})
 
   it('renders props.volume when passed', () => {
 	const volume  = 0.5
