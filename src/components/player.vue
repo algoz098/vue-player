@@ -24,7 +24,9 @@
 		@volumechange="atVolumechange"
 		@ended="atEnded"
 		@stalled="test"
-	/>
+	>
+		<slot name="sources"></slot>
+	</video>
 
 	<video-placeholder
 		:src="videoPlaceholderSrc"
@@ -32,7 +34,11 @@
 		:preview-on-mouse="previewOnMouse"
 		:mouseover="mouseover"
 		v-if="!started"
-	/>
+	>
+		<template slot="video-placeholder-sources">
+			<slot name="video-placeholder-sources"></slot>
+		</template>
+	</video-placeholder>
 
 	<div 
 		:class="overlayClass"
@@ -180,7 +186,6 @@ export default {
 	   * if array uses the src-index to pick one
        */
 		src: {
-			required: true,
 			type: [String, Array]
 		},
 
@@ -360,7 +365,7 @@ export default {
        * @private
        */
 		atEnded () {
-			if (typeof this.src != 'string') {
+			if (typeof this.src != 'string' || !this.$slots.sources) {
 				/**
 				 * if src is a array, at the end of the video emits the new src-index
 				 */
@@ -493,6 +498,10 @@ export default {
 
 		}
 	},
+    mounted() {
+      if (this.$slots.sources) // We need to remove the src attribute if we have the sources slot otherwise src="" will load a local directory
+        this.$refs.video.removeAttribute("src");
+    },
 
 	computed: {
 		/**
@@ -589,7 +598,8 @@ export default {
        * @private
        */
 		srcComputed () {
-			if (typeof this.src == 'string') return this.src
+			if (this.$slots.sources) return ""
+			else if (typeof this.src == 'string') return this.src
 
 			return this.src[this.srcIndex]
 		},

@@ -7,6 +7,8 @@ A must have html5 video player made in VueJS
 ## slots
 
 - `controls` Use this slot to replace the controls
+- `sources` Use this slot to add `<source>` elements to the video player, as well as fallbacks. When this slot is used the `src` property is ignored. See [<source> docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source)
+- `video-placeholder-sources` Use this slot to add `<source>` elements to the video placeholder player, as well as fallbacks. When this slot is used the `src` property is ignored. See [<source> docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source)
 
 ## props
 
@@ -23,7 +25,7 @@ A must have html5 video player made in VueJS
 - `src` **_String|Array_** (_required_)
 
   Define the source for the video tag.
-  if array uses the src-index to pick one
+  if array uses the src-index to pick one. Ignored if sources slot used.
 
 - `src-index` **_ArrayExpression_** (_optional_)
 
@@ -48,7 +50,7 @@ A must have html5 video player made in VueJS
 
 - `video-placeholder-src` **_String_** (_optional_)
 
-  if you want a video teaser you can use this, will be played with-out sound
+  if you want a video teaser you can use this, will be played without sound. Ignored if `video-placeholder-source` slot is used.
 
 - `volume` **_Number_** (_optional_) `default: undefined`
 
